@@ -255,7 +255,7 @@ class JointTrajectoryActionController():
                     if seg != 0: start_position = trajectory[seg - 1].positions[j]
                         
                     desired_position = trajectory[seg].positions[j]
-                    desired_velocity = max(self.min_velocity, abs(desired_position - start_position) / durations[seg])
+                    desired_velocity = max(self.min_velocity, abs(desired_position - start_position) / durations[seg])*2.5
                     
                     self.msg.desired.positions[j] = desired_position
                     self.msg.desired.velocities[j] = desired_velocity
