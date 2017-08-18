@@ -263,16 +263,16 @@ DXL_MODEL_TO_PARAMS = \
            'encoder_resolution': 4096,
            'range_degrees':      360.0,
            'torque_per_volt':    2.5 / 12.0,                       #  2.5 NM @ 12V
-           'velocity_per_volt':  (55 * RPM_TO_RADSEC) / 12.0,      #  54 RPM @ 12.0V
-           'rpm_per_tick':       0.114,
+           'velocity_per_volt':  (45 * RPM_TO_RADSEC) / 12.0,      #  54 RPM @ 12.0V | 45 RPM @ 12.0V for xQtor
+           'rpm_per_tick':       0.114/2.5,                        #  2.5 is a factor for xQtor
            'features':           [DXL_GOAL_ACCELERATION]
          },
     310: { 'name':               'MX-64',
            'encoder_resolution': 4096,
            'range_degrees':      360.0,
            'torque_per_volt':    6.0 / 12.0,                       #  6 NM @ 12V
-           'velocity_per_volt':  (63 * RPM_TO_RADSEC) / 12.0,      #  63 RPM @ 12.0V
-           'rpm_per_tick':       0.114,
+           'velocity_per_volt':  (40 * RPM_TO_RADSEC) / 12.0,      #  63 RPM @ 12.0V | 40 RPM @ 12.0V for xQtor
+           'rpm_per_tick':       0.114/2.8,                        #  2.8 is a factor for xQtor
            'features':           [DXL_CURRENT_L, DXL_TORQUE_CONTROL_MODE, DXL_GOAL_ACCELERATION]
          },
     320: { 'name':               'MX-106',
