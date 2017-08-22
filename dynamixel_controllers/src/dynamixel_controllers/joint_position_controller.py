@@ -45,6 +45,7 @@ __email__ = 'anton@email.arizona.edu'
 
 
 import rospy
+import math
 
 from dynamixel_driver.dynamixel_const import *
 from dynamixel_controllers.joint_controller import JointController
@@ -173,7 +174,11 @@ class JointPositionController(JointController):
                 self.joint_state.goal_pos = self.raw_to_rad(state.goal, self.initial_position_raw, self.flipped, self.RADIANS_PER_ENCODER_TICK)
                 self.joint_state.current_pos = self.raw_to_rad(state.position, self.initial_position_raw, self.flipped, self.RADIANS_PER_ENCODER_TICK)
                 self.joint_state.error = state.error * self.RADIANS_PER_ENCODER_TICK
-                self.joint_state.velocity = state.speed * self.VELOCITY_PER_TICK
+                # dynamixel servo velocity
+                # self.joint_state.velocity = state.speed * self.VELOCITY_PER_TICK
+                
+                # xQtor servo velocity
+                self.joint_state.velocity = state.speed * 2 * math.pi / 60
                 self.joint_state.load = state.load
                 self.joint_state.is_moving = state.moving
                 self.joint_state.header.stamp = rospy.Time.from_sec(state.timestamp)
